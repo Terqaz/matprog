@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Комбинаторный эвристический алгоритм</title>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js" defer></script>
+</head>
+<body>
+	<div class="panel">
+		<h3 class="panel__header"> Комбинаторный эвристический алгоритм </h3>
+		<h3 class="panel__header"> Входные данные </h3>
+		<div id="initialDataFiles">
+			<button id="initialDataSave" class="button">Сохранить</button>
+			<input type="file" id="initialDataLoad" class="button">
+		</div>
+
+		<form name="initialData" id="initialData" class=" initial-data">
+			<label> Количество переменных  </label>
+			<input type="number" name="dimensionsCount" class="initial-data__number" value="2" min="0" required>
+
+			<label> Минимизируемая функция  </label>
+			<p class="initial-data__description">
+				Знак возведения в степень: **. <br>
+				Поддерживаются все функции встроенного пакета Math в JavaScript c приставкой "Math.", например: Math.cos, Math.asinh, и пр. <br>
+				Переменные вводятся как: x1, x2, ...</p>
+			<input type="text" name="func" spellcheck="false" required>
+
+			<label> Ограничения </label>
+			<p class="initial-data__description">
+				Введите ограничения неравенств (каждое на новой строке). <br>
+				Также поддерживаются все функции встроенного пакета Math. <br>
+				При вводе используйте знаки: <=, >= <br></p>
+			<textarea name="constraints" rows="6" spellcheck="false"></textarea>
+
+			<label> Начальная точка </label>
+			<p class="initial-data__description">
+				Введите координаты через пробел. Целые числа автоматически преобразуются в дробные. Разделитель в дробных числах - точка</p>
+			<input type="text" name="x0" spellcheck="false" required>
+
+			<label> Интервалы изменения переменных </label>
+			<p class="initial-data__description">
+				Введите длины интервалов через пробел. Целые числа автоматически преобразуются в дробные</p>
+			<input type="text" name="z" spellcheck="false" required>
+
+			<label> Количество дополнительных точек при делении интервала </label>
+			<p class="initial-data__description">
+				Введите целое число. Рекомендуется от 3 до 5</p>
+			<input type="number" name="q" class="initial-data__number" value="3" min="2" required>
+
+			<label> Точность </label>
+			<input type="number" name="eps" class="initial-data__number" step="0.0000000001" required>
+
+			<input type="submit" name="submit" id="initialDataSubmit" class="button" value="Найти минимум">
+			<p id="initialDataError">Ошибка</p>
+		</form>
+	</div>
+	
+	<div class="panel results">
+		<h3 id="resultsHere" class="panel__header">Здесь будут находиться результаты вычислений</h3>
+		<div id="resultsValues">
+			<h4> Минимизируемая функция: </h4>
+			<p id="resultsFunction"></p>
+			<h4> Найденная точка минимума: </h4>
+			<p id="resultsXmin"></p>
+			<h4> Значение функции в точке минимума: </h4>
+			<p id="resultsFmin"></p>
+		</div>
+		<p id="resultsWaitPlease">Происходит нахождение точки минимума...</p>
+		<h4> Отчет: </h4>
+		<textarea id="resultsReport" rows="20" spellcheck="false"></textarea>
+		<button id="resultsSave" class="button">Сохранить отчет</button>
+	</div>
+</body>
+</html>
